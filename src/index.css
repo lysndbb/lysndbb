@@ -1,0 +1,267 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sd-wood-dark: #381f13;
+  --sd-wood-med: #5b3117;
+  --sd-wood-light: #8b5329;
+  --sd-parchment: #fbf2d5;
+  --sd-parchment-dark: #eedcb1;
+  --sd-gold: #f6b262;
+  --sd-gold-glow: #ffdf79;
+  --sd-iridium: #9b51e0;
+  --sd-green: #487332;
+}
+
+body {
+  font-family: "Noto Serif SC", "Cinzel", "LXGW WenKai", "Songti SC", STSong, "Source Han Serif CN", Georgia, -apple-system, BlinkMacSystemFont, "Segoe UI", serif;
+  background-color: #24130a;
+  background-image: 
+    radial-gradient(#381f13 1px, transparent 1px),
+    radial-gradient(#4a2817 1px, #201008 1px);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+  color: #381f13;
+  overflow-x: hidden;
+}
+
+/* 星露谷经典双层木边羊皮纸容器 */
+.sd-box {
+  background: var(--sd-parchment);
+  border: 4px solid var(--sd-wood-med);
+  box-shadow: 
+    inset 0 0 0 2px var(--sd-gold),
+    inset 0 0 16px rgba(139, 83, 41, 0.22),
+    4px 4px 0px rgba(0, 0, 0, 0.45);
+  position: relative;
+}
+
+/* 星露谷背包触感木质选项卡 */
+.sd-tab-wood-active {
+  background: linear-gradient(180deg, #8b5329 0%, #6a391c 50%, #522712 100%);
+  border: 2px solid #f6b262;
+  border-bottom: 2px solid #522712;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 235, 170, 0.45),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+    0 -3px 8px rgba(0, 0, 0, 0.6);
+  color: #ffdf79;
+}
+
+.sd-tab-wood-inactive {
+  background: linear-gradient(180deg, #3a1c0e 0%, #291207 100%);
+  border: 2px solid #4a2411;
+  border-bottom: 2px solid #200d04;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.65);
+  color: rgba(238, 220, 177, 0.75);
+}
+
+.sd-tab-wood-inactive:hover {
+  background: linear-gradient(180deg, #5c2d15 0%, #3e1d0c 100%);
+  border-color: #8b5329;
+  color: #ffdf79;
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255, 235, 170, 0.2), 0 -2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.sd-wood-panel {
+  background: linear-gradient(135deg, #4a2817 0%, #341a0e 100%);
+  border: 3px solid #6b3a1d;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.12), 0 4px 12px rgba(0,0,0,0.45);
+}
+
+.sd-btn-wood {
+  background: linear-gradient(180deg, #8b5329 0%, #5b3117 100%);
+  border: 2px solid #f6b262;
+  color: #fbf2d5;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+  transition: all 0.1s ease;
+}
+
+.sd-btn-wood:hover {
+  background: linear-gradient(180deg, #a46432 0%, #6e3c1d 100%);
+  transform: translateY(-1px);
+  box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.6);
+}
+
+.sd-btn-wood:active {
+  transform: translateY(1px);
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.4);
+}
+
+.sd-btn-gold {
+  background: linear-gradient(180deg, #ffdf79 0%, #f6b262 100%);
+  border: 2px solid #5b3117;
+  color: #381f13;
+  font-weight: 700;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+}
+
+.sd-btn-gold:hover {
+  background: linear-gradient(180deg, #fff0a8 0%, #f9be77 100%);
+  box-shadow: 0 0 10px rgba(246, 178, 98, 0.8), 2px 2px 0px rgba(0, 0, 0, 0.4);
+}
+
+/* 导出防伪水印 */
+.export-watermark {
+  position: relative;
+}
+.export-watermark::after {
+  content: "杭电职务数智评判系统 · 官方防伪证据链水印";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-25deg);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: rgba(139, 83, 41, 0.08);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+/* 复古滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #2b180d;
+}
+::-webkit-scrollbar-thumb {
+  background: #8b5329;
+  border: 2px solid #5b3117;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a46432;
+}
+
+/* ============ 动效体系 ============ */
+@keyframes sd-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes sd-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes sd-pop-in {
+  0% { opacity: 0; transform: scale(0.9); }
+  60% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes sd-slide-right {
+  from { opacity: 0; transform: translateX(-18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes sd-grow-x {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@keyframes sd-grow-y {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+@keyframes sd-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes sd-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes sd-pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(200, 134, 42, 0.55); }
+  70% { box-shadow: 0 0 0 10px rgba(200, 134, 42, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(200, 134, 42, 0); }
+}
+@keyframes sd-dash {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes sd-draw-line {
+  from { stroke-dasharray: 0 1200; }
+  to { stroke-dasharray: 1200 0; }
+}
+@keyframes sd-spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes sd-scan {
+  0% { transform: translateX(-100%); opacity: 0; }
+  40% { opacity: 0.9; }
+  100% { transform: translateX(320%); opacity: 0; }
+}
+
+.anim-fade-up { animation: sd-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade-in { animation: sd-fade-in 0.5s ease both; }
+.anim-pop-in { animation: sd-pop-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-slide-right { animation: sd-slide-right 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-float { animation: sd-float 3.6s ease-in-out infinite; }
+.anim-pulse-ring { animation: sd-pulse-ring 1.8s ease-out infinite; }
+.anim-spin-slow { animation: sd-spin-slow 9s linear infinite; }
+.anim-page { animation: sd-fade-up 0.42s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+.anim-grow-bar { transform-origin: left center; animation: sd-grow-x 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-grow-col { transform-origin: bottom center; animation: sd-grow-y 0.9s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* 卡片悬浮质感 */
+.sd-hover-lift {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.sd-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* 生成中流光条 */
+.sd-shimmer {
+  background-image: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 240, 200, 0.65) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  background-size: 200% 100%;
+  animation: sd-shimmer 1.5s linear infinite;
+}
+
+/* 扫描线（材料解析/模型推理） */
+.sd-scanline {
+  position: relative;
+  overflow: hidden;
+}
+.sd-scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 34%;
+  background: linear-gradient(90deg, transparent, rgba(255, 223, 121, 0.35), transparent);
+  animation: sd-scan 1.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* 雷达图路径描边 */
+.sd-radar-line {
+  animation: sd-draw-line 1.1s ease-out both;
+}
+
+/* 逐条入场延迟 */
+.stagger > * { animation: sd-fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.stagger > *:nth-child(1) { animation-delay: 0.02s; }
+.stagger > *:nth-child(2) { animation-delay: 0.07s; }
+.stagger > *:nth-child(3) { animation-delay: 0.12s; }
+.stagger > *:nth-child(4) { animation-delay: 0.17s; }
+.stagger > *:nth-child(5) { animation-delay: 0.22s; }
+.stagger > *:nth-child(6) { animation-delay: 0.27s; }
+.stagger > *:nth-child(7) { animation-delay: 0.32s; }
+.stagger > *:nth-child(8) { animation-delay: 0.37s; }
+.stagger > *:nth-child(9) { animation-delay: 0.42s; }
+.stagger > *:nth-child(10) { animation-delay: 0.47s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up, .anim-fade-in, .anim-pop-in, .anim-slide-right, .anim-float,
+  .anim-pulse-ring, .anim-spin-slow, .anim-page, .anim-grow-bar, .anim-grow-col,
+  .sd-shimmer, .sd-scanline::after, .sd-radar-line, .stagger > * {
+    animation: none !important;
+  }
+}
